@@ -58,7 +58,7 @@ class DemoSeeder extends Seeder
         ];
 
         foreach ($categories as $categoryData) {
-            Category::create($categoryData);
+            Category::firstOrCreate(['slug' => $categoryData['slug']], $categoryData);
         }
 
         // Products
@@ -153,7 +153,7 @@ class DemoSeeder extends Seeder
         ];
 
         foreach ($products as $productData) {
-            Product::create($productData);
+            Product::firstOrCreate(['slug' => $productData['slug']], $productData);
         }
 
         // Testimonials
@@ -185,7 +185,10 @@ class DemoSeeder extends Seeder
         ];
 
         foreach ($testimonials as $testimonialData) {
-            Testimonial::create($testimonialData);
+            Testimonial::firstOrCreate([
+                'client_name' => $testimonialData['client_name'],
+                'company' => $testimonialData['company']
+            ], $testimonialData);
         }
 
         // Articles
@@ -211,7 +214,7 @@ class DemoSeeder extends Seeder
         ];
 
         foreach ($articles as $articleData) {
-            Article::create($articleData);
+            Article::firstOrCreate(['slug' => $articleData['slug']], $articleData);
         }
 
         // Galleries
@@ -235,7 +238,7 @@ class DemoSeeder extends Seeder
         ];
 
         foreach ($galleries as $galleryData) {
-            Gallery::create($galleryData);
+            Gallery::firstOrCreate(['slug' => $galleryData['slug']], $galleryData);
         }
     }
 }

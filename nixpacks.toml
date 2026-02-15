@@ -25,4 +25,4 @@ cmds = [
 ]
 
 [start]
-cmd = "chmod -R 777 storage bootstrap/cache && php artisan migrate --force && php artisan storage:link && php artisan optimize && php -S 0.0.0.0:$PORT -t public"
+cmd = "mkdir -p storage/app/livewire-tmp && chmod -R 777 storage bootstrap/cache && php artisan migrate --force && php artisan storage:link && php artisan optimize && php -S 0.0.0.0:$PORT -t public"

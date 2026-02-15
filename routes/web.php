@@ -14,16 +14,6 @@ use App\Http\Controllers\PageController;
 |--------------------------------------------------------------------------
 */
 
-// Temporary Setup Route (Auto-Seeding)
-Route::get('/setup-data', function () {
-    try {
-        Artisan::call('db:seed', ['--force' => true]);
-        return '<h1>Database Seeded Successfully!</h1><p>Data contoh (Produk, Kategori, User Admin) sudah masuk.</p><a href="/">Kembali ke Home</a>';
-    } catch (\Throwable $e) {
-        return '<h1>Error Seeding Database</h1><p>' . $e->getMessage() . '</p><pre>' . $e->getTraceAsString() . '</pre>';
-    }
-});
-
 // Homepage
 Route::get('/', [HomeController::class, 'index'])->name('home');
 

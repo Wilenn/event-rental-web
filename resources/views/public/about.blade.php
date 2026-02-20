@@ -170,18 +170,19 @@
                             </div>
                             <p class="text-slate-700 italic mb-6">"{{ $testimonial->content }}"</p>
                             <div class="flex items-center gap-4">
-                                @if($testimonial->image)
-                                    <img src="{{ Storage::url($testimonial->image) }}" alt="{{ $testimonial->name }}"
+                                @if($testimonial->avatar)
+                                    <img src="{{ $testimonial->avatar_url }}" alt="{{ $testimonial->client_name }}"
                                         class="w-12 h-12 rounded-full object-cover">
                                 @else
                                     <div
                                         class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 font-bold text-lg">
-                                        {{ substr($testimonial->name, 0, 1) }}
+                                        {{ $testimonial->initials }}
                                     </div>
                                 @endif
                                 <div>
-                                    <h4 class="font-bold text-slate-900">{{ $testimonial->name }}</h4>
-                                    <p class="text-sm text-slate-500">{{ $testimonial->role ?? 'Client' }}</p>
+                                    <h4 class="font-bold text-slate-900">{{ $testimonial->client_name }}</h4>
+                                    <p class="text-sm text-slate-500">
+                                        {{ $testimonial->company ?? $testimonial->position ?? 'Client' }}</p>
                                 </div>
                             </div>
                         </div>
